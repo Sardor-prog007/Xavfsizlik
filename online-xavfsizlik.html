@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Xavfsizlik — emaktab.uz</title>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700;900&family=Mulish:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0e1a;
+  --bg2:#0f1527;
+  --card:#141c33;
+  --card2:#1a2340;
+  --neon:#00e5ff;
+  --neon2:#7b2fff;
+  --green:#00ff9d;
+  --red:#ff3b5c;
+  --yellow:#ffd60a;
+  --text:#e8eaf6;
+  --muted:#7986a3;
+  --border:#1e2d50;
+}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Mulish',sans-serif;
+  font-weight:300;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:40px 20px;
+  position:relative;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(0,229,255,.12) 0%,transparent 70%),
+             radial-gradient(ellipse 60% 40% at 80% 80%,rgba(123,47,255,.1) 0%,transparent 60%);
+}
+.grid-lines{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(0,229,255,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,229,255,.04) 1px,transparent 1px);
+  background-size:60px 60px;
+  animation:gridMove 20s linear infinite;
+}
+@keyframes gridMove{to{background-position:60px 60px}}
+
+.hero-badge{
+  display:inline-block;
+  border:1px solid var(--neon);
+  color:var(--neon);
+  font-size:11px;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  padding:6px 18px;
+  border-radius:100px;
+  margin-bottom:28px;
+  animation:fadeUp .6s ease both;
+  position:relative;
+}
+.hero h1{
+  font-family:'Unbounded',sans-serif;
+  font-size:clamp(36px,8vw,96px);
+  font-weight:900;
+  line-height:1;
+  letter-spacing:-2px;
+  position:relative;
+  animation:fadeUp .6s .1s ease both;
+}
+.hero h1 .line1{display:block;color:var(--text)}
+.hero h1 .line2{
+  display:block;
+  background:linear-gradient(90deg,var(--neon),var(--neon2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.hero-sub{
+  max-width:560px;
+  margin:24px auto 0;
+  font-size:17px;
+  color:var(--muted);
+  animation:fadeUp .6s .2s ease both;
+}
+.hero-tags{
+  display:flex;flex-wrap:wrap;gap:10px;justify-content:center;
+  margin-top:32px;
+  animation:fadeUp .6s .3s ease both;
+}
+.tag{
+  background:rgba(0,229,255,.07);
+  border:1px solid rgba(0,229,255,.2);
+  color:var(--neon);
+  font-size:13px;
+  padding:7px 16px;
+  border-radius:100px;
+  cursor:default;
+  transition:all .25s;
+}
+.tag:hover{background:rgba(0,229,255,.15);transform:translateY(-2px)}
+.scroll-hint{
+  position:absolute;bottom:32px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  color:var(--muted);font-size:12px;letter-spacing:2px;text-transform:uppercase;
+  animation:bounce 2s infinite;
+}
+.scroll-hint svg{width:20px;height:20px;stroke:var(--muted)}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── STATS BAR ── */
+.stats-bar{
+  background:var(--card);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:28px 20px;
+}
+.stats-inner{
+  max-width:960px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center;
+}
+.stat-item .num{
+  font-family:'Unbounded',sans-serif;
+  font-size:clamp(24px,4vw,40px);
+  font-weight:700;
+  background:linear-gradient(90deg,var(--neon),var(--green));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.stat-item .label{font-size:12px;color:var(--muted);margin-top:4px;letter-spacing:.5px}
+
+/* ── SECTIONS ── */
+.container{max-width:960px;margin:0 auto;padding:0 20px}
+section{padding:80px 0}
+
+.section-tag{
+  font-size:11px;letter-spacing:5px;text-transform:uppercase;
+  color:var(--neon);margin-bottom:12px;display:block;
+  font-weight:700;
+}
+.section-title{
+  font-family:'Unbounded',sans-serif;
+  font-size:clamp(22px,4vw,38px);
+  font-weight:700;line-height:1.2;
+  margin-bottom:20px;
+}
+.section-title span{
+  background:linear-gradient(90deg,var(--neon),var(--neon2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.lead{font-size:16.5px;color:#b0bcd4;max-width:680px;margin-bottom:40px}
+
+/* ── CARDS ── */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:32px}
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:28px;
+  transition:all .3s;
+  position:relative;
+  overflow:hidden;
+}
+.card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--neon),var(--neon2));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .4s ease;
+}
+.card:hover{transform:translateY(-6px);border-color:rgba(0,229,255,.3);box-shadow:0 20px 60px rgba(0,229,255,.08)}
+.card:hover::before{transform:scaleX(1)}
+.card-icon{font-size:36px;margin-bottom:16px;display:block}
+.card h3{font-family:'Unbounded',sans-serif;font-size:15px;font-weight:700;margin-bottom:10px}
+.card p{font-size:14px;color:var(--muted);line-height:1.6}
+
+/* ── INTERACTIVE PASSWORD CHECKER ── */
+.pw-section{
+  background:linear-gradient(135deg,var(--card) 0%,rgba(0,229,255,.05) 100%);
+  border:1px solid var(--border);
+  border-radius:24px;
+  padding:48px;
+  margin-top:48px;
+  position:relative;
+  overflow:hidden;
+}
+.pw-section::before{
+  content:'';position:absolute;top:-80px;right:-80px;
+  width:300px;height:300px;
+  background:radial-gradient(circle,rgba(0,229,255,.08),transparent 70%);
+  pointer-events:none;
+}
+.pw-section h3{
+  font-family:'Unbounded',sans-serif;font-size:20px;font-weight:700;
+  margin-bottom:8px;
+}
+.pw-section .desc{font-size:15px;color:var(--muted);margin-bottom:28px}
+.pw-input-wrap{position:relative;margin-bottom:24px}
+.pw-input{
+  width:100%;
+  background:rgba(255,255,255,.05);
+  border:2px solid var(--border);
+  border-radius:12px;
+  padding:16px 52px 16px 20px;
+  font-family:'Unbounded',sans-serif;
+  font-size:18px;
+  color:var(--text);
+  letter-spacing:3px;
+  outline:none;
+  transition:border-color .3s;
+}
+.pw-input:focus{border-color:var(--neon);box-shadow:0 0 0 4px rgba(0,229,255,.1)}
+.pw-toggle{
+  position:absolute;right:16px;top:50%;transform:translateY(-50%);
+  background:none;border:none;color:var(--muted);cursor:pointer;font-size:20px;
+}
+.strength-bar-wrap{height:8px;background:rgba(255,255,255,.08);border-radius:100px;margin-bottom:20px;overflow:hidden}
+.strength-bar{height:100%;border-radius:100px;transition:all .5s cubic-bezier(.4,0,.2,1);width:0}
+.strength-info{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+.strength-label{font-family:'Unbounded',sans-serif;font-size:14px;font-weight:700}
+.crack-time{font-size:13px;color:var(--muted)}
+.crack-time span{color:var(--yellow);font-weight:700}
+.pw-criteria{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.criterion{
+  display:flex;align-items:center;gap:10px;
+  font-size:13px;color:var(--muted);
+  background:rgba(255,255,255,.03);
+  border-radius:8px;padding:10px 14px;
+  transition:all .3s;
+}
+.criterion.met{color:var(--green)}
+.criterion .dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--border);flex-shrink:0;transition:all .3s;
+}
+.criterion.met .dot{background:var(--green);box-shadow:0 0 8px var(--green)}
+.pw-examples{margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.pw-ex{
+  border-radius:10px;padding:14px 18px;
+  font-family:'Courier New',monospace;
+}
+.pw-ex.bad{background:rgba(255,59,92,.1);border:1px solid rgba(255,59,92,.3)}
+.pw-ex.good{background:rgba(0,255,157,.08);border:1px solid rgba(0,255,157,.25)}
+.pw-ex-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;font-family:'Mulish',sans-serif}
+.pw-ex.bad .pw-ex-label{color:var(--red)}
+.pw-ex.good .pw-ex-label{color:var(--green)}
+.pw-ex-val{font-size:16px;font-weight:700;letter-spacing:2px}
+.pw-ex.bad .pw-ex-val{color:var(--red)}
+.pw-ex.good .pw-ex-val{color:var(--green)}
+.pw-ex-time{font-size:11px;color:var(--muted);margin-top:4px;font-family:'Mulish',sans-serif}
+
+/* ── DATA DOWNLOAD SITES ── */
+.sites-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:36px}
+.site-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:16px;padding:28px;
+  transition:all .3s;
+  text-decoration:none;color:inherit;
+  display:flex;flex-direction:column;gap:14px;
+  position:relative;overflow:hidden;
+}
+.site-card:hover{transform:translateY(-4px);border-color:rgba(0,229,255,.3);box-shadow:0 16px 48px rgba(0,0,0,.4)}
+.site-logo{
+  width:48px;height:48px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;
+}
+.site-name{font-family:'Unbounded',sans-serif;font-size:14px;font-weight:700}
+.site-url{font-size:12px;color:var(--neon);font-family:'Courier New',monospace;margin-top:-8px}
+.site-desc{font-size:13.5px;color:var(--muted);line-height:1.6;flex:1}
+.site-tags{display:flex;gap:6px;flex-wrap:wrap}
+.site-tag{
+  font-size:10px;padding:3px 10px;border-radius:100px;
+  background:rgba(0,229,255,.08);border:1px solid rgba(0,229,255,.15);color:var(--neon);
+  letter-spacing:.5px;
+}
+.site-arrow{
+  position:absolute;top:20px;right:20px;
+  color:var(--muted);font-size:20px;transition:transform .3s;
+}
+.site-card:hover .site-arrow{transform:translate(4px,-4px);color:var(--neon)}
+
+/* ── CHECK SITES ── */
+.check-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:16px;padding:28px;
+  transition:all .3s;
+  display:flex;gap:20px;align-items:flex-start;
+}
+.check-card:hover{border-color:rgba(0,229,255,.25);transform:translateX(6px)}
+.check-icon{
+  width:52px;height:52px;border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;flex-shrink:0;
+}
+.check-content{}
+.check-name{font-family:'Unbounded',sans-serif;font-size:14px;font-weight:700;margin-bottom:4px}
+.check-link{font-size:12px;color:var(--neon);font-family:'Courier New',monospace;text-decoration:none}
+.check-link:hover{text-decoration:underline}
+.check-desc{font-size:13.5px;color:var(--muted);margin-top:8px;line-height:1.6}
+.checks-list{display:flex;flex-direction:column;gap:14px;margin-top:32px}
+
+/* ── PHISHING DEMO ── */
+.phishing-demo{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:20px;padding:36px;margin-top:40px;
+}
+.phishing-demo h3{font-family:'Unbounded',sans-serif;font-size:18px;margin-bottom:8px}
+.phishing-demo .sub{font-size:14px;color:var(--muted);margin-bottom:28px}
+.url-compare{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.url-box{border-radius:12px;padding:20px}
+.url-box.fake{background:rgba(255,59,92,.08);border:1.5px solid rgba(255,59,92,.3)}
+.url-box.real{background:rgba(0,255,157,.06);border:1.5px solid rgba(0,255,157,.25)}
+.url-box-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;font-weight:700}
+.url-box.fake .url-box-label{color:var(--red)}
+.url-box.real .url-box-label{color:var(--green)}
+.url-bar{
+  background:rgba(0,0,0,.3);border-radius:8px;
+  padding:10px 14px;font-family:'Courier New',monospace;font-size:13px;
+  margin-bottom:12px;display:flex;align-items:center;gap:8px;
+}
+.url-bar .lock{font-size:14px}
+.url-text{word-break:break-all}
+.url-box.fake .url-text{color:var(--red)}
+.url-box.real .url-text{color:var(--green)}
+.url-hint{font-size:12px;color:var(--muted);line-height:1.5}
+.url-highlight{background:rgba(255,59,92,.25);border-radius:3px;padding:1px 4px;color:var(--red)}
+
+/* ── 2FA STEPS ── */
+.steps-visual{
+  display:flex;align-items:flex-start;gap:0;
+  margin-top:36px;flex-wrap:wrap;
+}
+.step-v{
+  flex:1;min-width:200px;
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  position:relative;
+  padding:0 16px;
+}
+.step-v:not(:last-child)::after{
+  content:'→';position:absolute;right:-8px;top:30px;
+  color:var(--neon);font-size:24px;font-weight:700;
+}
+.step-circle{
+  width:64px;height:64px;border-radius:50%;
+  border:2px solid var(--neon);
+  display:flex;align-items:center;justify-content:center;
+  font-size:28px;margin-bottom:16px;
+  background:rgba(0,229,255,.06);
+  position:relative;
+}
+.step-circle .num{
+  position:absolute;top:-8px;right:-8px;
+  width:22px;height:22px;border-radius:50%;
+  background:var(--neon);color:var(--bg);
+  font-family:'Unbounded',sans-serif;font-size:11px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+}
+.step-v h4{font-family:'Unbounded',sans-serif;font-size:12px;font-weight:700;margin-bottom:6px}
+.step-v p{font-size:13px;color:var(--muted)}
+
+/* ── TIP BLOCK ── */
+.tip-block{
+  background:rgba(0,229,255,.05);
+  border:1px solid rgba(0,229,255,.2);
+  border-radius:14px;padding:22px 26px;
+  margin-top:24px;display:flex;gap:16px;align-items:flex-start;
+}
+.tip-block .tip-icon{font-size:24px;flex-shrink:0;margin-top:2px}
+.tip-block .tip-text{font-size:14.5px;color:#b0bcd4;line-height:1.65}
+.tip-block .tip-text strong{color:var(--neon);font-weight:700}
+
+.warn-block{
+  background:rgba(255,214,10,.05);
+  border:1px solid rgba(255,214,10,.25);
+  border-radius:14px;padding:22px 26px;
+  margin-top:24px;display:flex;gap:16px;align-items:flex-start;
+}
+.warn-block .tip-icon{font-size:24px;flex-shrink:0;margin-top:2px}
+.warn-block .tip-text{font-size:14.5px;color:#b0bcd4;line-height:1.65}
+.warn-block .tip-text strong{color:var(--yellow);font-weight:700}
+
+/* ── QUIZ ── */
+.quiz-section{
+  background:var(--card2);
+  border-radius:24px;
+  padding:48px;
+  margin-top:48px;
+  border:1px solid var(--border);
+}
+.quiz-section h3{font-family:'Unbounded',sans-serif;font-size:22px;font-weight:700;margin-bottom:8px}
+.quiz-section .qdesc{font-size:15px;color:var(--muted);margin-bottom:32px}
+.quiz-q{margin-bottom:32px;animation:fadeUp .4s ease both}
+.quiz-q .q-text{font-size:16px;font-weight:600;margin-bottom:16px}
+.quiz-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.quiz-opt{
+  background:rgba(255,255,255,.04);
+  border:1.5px solid var(--border);
+  border-radius:10px;padding:14px 18px;
+  font-size:14px;cursor:pointer;
+  transition:all .25s;text-align:left;color:var(--text);
+}
+.quiz-opt:hover:not(:disabled){border-color:var(--neon);background:rgba(0,229,255,.08);transform:translateY(-2px)}
+.quiz-opt.correct{border-color:var(--green);background:rgba(0,255,157,.1);color:var(--green)}
+.quiz-opt.wrong{border-color:var(--red);background:rgba(255,59,92,.1);color:var(--red)}
+.quiz-opt:disabled{cursor:default}
+.quiz-feedback{
+  margin-top:12px;font-size:14px;padding:12px 16px;
+  border-radius:8px;display:none;
+}
+.quiz-feedback.show{display:block;animation:fadeUp .3s ease}
+.quiz-feedback.ok{background:rgba(0,255,157,.08);color:var(--green);border:1px solid rgba(0,255,157,.2)}
+.quiz-feedback.nok{background:rgba(255,59,92,.08);color:#ff8099;border:1px solid rgba(255,59,92,.2)}
+.quiz-score{
+  text-align:center;padding:32px;display:none;
+}
+.quiz-score.show{display:block;animation:fadeUp .5s ease}
+.score-circle{
+  width:100px;height:100px;border-radius:50%;
+  border:3px solid var(--neon);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  margin:0 auto 16px;
+}
+.score-num{font-family:'Unbounded',sans-serif;font-size:28px;font-weight:900;color:var(--neon)}
+.score-total{font-size:12px;color:var(--muted)}
+.score-msg{font-size:16px;color:var(--text);margin-bottom:20px}
+.quiz-restart{
+  background:linear-gradient(90deg,var(--neon),var(--neon2));
+  border:none;border-radius:100px;padding:12px 32px;
+  font-family:'Unbounded',sans-serif;font-size:14px;font-weight:700;
+  color:var(--bg);cursor:pointer;transition:transform .2s,box-shadow .2s;
+}
+.quiz-restart:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,229,255,.3)}
+
+/* ── CHECKLIST SECTION ── */
+.checklist-v{list-style:none;margin-top:28px}
+.checklist-v li{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:16px 0;border-bottom:1px solid var(--border);
+  font-size:15px;
+}
+.checklist-v li:last-child{border-bottom:none}
+.check-num{
+  width:28px;height:28px;border-radius:50%;
+  background:linear-gradient(135deg,var(--neon),var(--neon2));
+  color:var(--bg);font-family:'Unbounded',sans-serif;font-size:11px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;
+}
+
+/* ── DIVIDER ── */
+.divider{
+  height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);
+  margin:20px 0;
+}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--card);
+  border-top:1px solid var(--border);
+  text-align:center;padding:40px 20px;
+  color:var(--muted);font-size:13px;
+}
+footer strong{color:var(--neon)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:640px){
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .pw-examples,.url-compare,.quiz-opts,.pw-criteria{grid-template-columns:1fr}
+  .pw-section{padding:28px 20px}
+  .quiz-section{padding:28px 20px}
+  .steps-visual{flex-direction:column}
+  .step-v:not(:last-child)::after{content:'↓';right:auto;top:auto;bottom:-12px;left:50%}
+}
+
+/* ── FADE IN ON SCROLL ── */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- ════ HERO ════ -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="grid-lines"></div>
+  <span class="hero-badge">emaktab.uz · Raqamli Xavfsizlik</span>
+  <h1>
+    <span class="line1">Online</span>
+    <span class="line2">Xavfsizlik</span>
+  </h1>
+  <p class="hero-sub">O'qituvchi va o'quvchilar uchun: ma'lumotlaringizni qanday himoya qilasiz? Parolingiz qanchalik kuchli? Test orqali bilib oling.</p>
+  <div class="hero-tags">
+    <span class="tag">🔐 Parol kuchi</span>
+    <span class="tag">📥 Ma'lumot yuklab olish</span>
+    <span class="tag">🎣 Fishing</span>
+    <span class="tag">🛡️ 2FA</span>
+    <span class="tag">🔍 Buzilganmi?</span>
+    <span class="tag">📱 Telegram xavfsizligi</span>
+  </div>
+  <div class="scroll-hint">
+    <span>O'qishni boshlang</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</div>
+
+<!-- ════ STATS ════ -->
+<div class="stats-bar reveal">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="num">2.2M</div><div class="label">Har kuni buzilgan akkaunt</div></div>
+    <div class="stat-item"><div class="num">83%</div><div class="label">Oddiy xato sababli</div></div>
+    <div class="stat-item"><div class="num">1 sek</div><div class="label">"123456" ni buzish vaqti</div></div>
+    <div class="stat-item"><div class="num">×9</div><div class="label">2FA bilan xavf kamayishi</div></div>
+  </div>
+</div>
+
+<!-- ════ 1. PAROL ════ -->
+<section>
+  <div class="container reveal">
+    <span class="section-tag">01 · Parol Xavfsizligi</span>
+    <h2 class="section-title">Parolingiz <span>qanchalik kuchli?</span></h2>
+    <p class="lead">Quyida o'z parolingizni kiriting va uni buzish uchun qancha vaqt ketishini ko'ring. Hech narsa saqlanmaydi — faqat sizning brauzeringizda ishlaydi.</p>
+
+    <div class="pw-section">
+      <h3>🔐 Parol Kuchligi Tekshiruvi</h3>
+      <p class="desc">Parolingizni kiriting va natijani ko'ring</p>
+      <div class="pw-input-wrap">
+        <input type="password" class="pw-input" id="pwInput" placeholder="Parolingizni kiriting..." autocomplete="off">
+        <button class="pw-toggle" id="pwToggle" onclick="togglePw()">👁</button>
+      </div>
+      <div class="strength-bar-wrap"><div class="strength-bar" id="strengthBar"></div></div>
+      <div class="strength-info">
+        <span class="strength-label" id="strengthLabel" style="color:var(--muted)">Parol kiriting...</span>
+        <span class="crack-time">Buzilish vaqti: <span id="crackTime">—</span></span>
+      </div>
+      <div class="pw-criteria">
+        <div class="criterion" id="c-len">  <span class="dot"></span> 8+ ta belgi</div>
+        <div class="criterion" id="c-upper"><span class="dot"></span> Katta harf (A–Z)</div>
+        <div class="criterion" id="c-lower"><span class="dot"></span> Kichik harf (a–z)</div>
+        <div class="criterion" id="c-num">  <span class="dot"></span> Raqam (0–9)</div>
+        <div class="criterion" id="c-sym">  <span class="dot"></span> Maxsus belgi (!@#$%)</div>
+        <div class="criterion" id="c-long"> <span class="dot"></span> 12+ ta belgi (a'lo)</div>
+      </div>
+      <div class="pw-examples" style="margin-top:28px">
+        <div class="pw-ex bad">
+          <div class="pw-ex-label">❌ Zaif</div>
+          <div class="pw-ex-val">12345678</div>
+          <div class="pw-ex-time">Buziladi: &lt; 1 sekund</div>
+        </div>
+        <div class="pw-ex bad">
+          <div class="pw-ex-label">❌ Zaif</div>
+          <div class="pw-ex-val">sardor2010</div>
+          <div class="pw-ex-time">Buziladi: ~3 daqiqa</div>
+        </div>
+        <div class="pw-ex good">
+          <div class="pw-ex-label">✓ Kuchli</div>
+          <div class="pw-ex-val">Maktab#7Qush!</div>
+          <div class="pw-ex-time">Buziladi: 200+ yil</div>
+        </div>
+        <div class="pw-ex good">
+          <div class="pw-ex-label">✓ A'lo</div>
+          <div class="pw-ex-val">K0'k@lam-2024!</div>
+          <div class="pw-ex-time">Buziladi: 10,000+ yil</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-block" style="margin-top:28px">
+      <span class="tip-icon">💡</span>
+      <div class="tip-text"><strong>Parol menejeri ishlating:</strong> Bitwarden (bepul, ochiq kodli) yoki 1Password yordamida har bir sayt uchun alohida, murakkab parol yarating. Faqat bitta "usta parol"ni eslab qolasiz.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ 2. MA'LUMOT YUKLAB OLISH ════ -->
+<section style="background:var(--bg2);padding:80px 0">
+  <div class="container reveal">
+    <span class="section-tag">02 · Raqamli Iz</span>
+    <h2 class="section-title">Haqida nima <span>bilishadi?</span></h2>
+    <p class="lead">Google, Telegram va boshqa xizmatlar siz haqingizda juda ko'p ma'lumot to'playdi. Quyidagi rasmiy saytlar orqali o'z ma'lumotlaringizni yuklab olishingiz mumkin.</p>
+
+    <div class="sites-grid">
+
+      <a href="https://takeout.google.com" target="_blank" rel="noopener" class="site-card">
+        <span class="site-arrow">↗</span>
+        <div class="site-logo" style="background:rgba(66,133,244,.15)">📦</div>
+        <div>
+          <div class="site-name">Google Takeout</div>
+          <div class="site-url">takeout.google.com</div>
+        </div>
+        <div class="site-desc">Gmail, YouTube tarixi, Xaritalar, Foto, Drive, Contacts — barcha Google ma'lumotlaringizni bitta ZIP faylda yuklab oling. 50+ kategoriya mavjud.</div>
+        <div class="site-tags">
+          <span class="site-tag">Gmail</span>
+          <span class="site-tag">YouTube</span>
+          <span class="site-tag">Xaritalar</span>
+          <span class="site-tag">Drive</span>
+        </div>
+      </a>
+
+      <a href="https://myactivity.google.com" target="_blank" rel="noopener" class="site-card">
+        <span class="site-arrow">↗</span>
+        <div class="site-logo" style="background:rgba(251,188,5,.12)">🕐</div>
+        <div>
+          <div class="site-name">Google My Activity</div>
+          <div class="site-url">myactivity.google.com</div>
+        </div>
+        <div class="site-desc">Google saqlab qo'ygan barcha faoliyatingiz: qidiruv so'zlari, ko'rilgan videolar, bosilgan reklamalar, joylashuv tarixi. Kerakmaydiganini o'chirishingiz mumkin.</div>
+        <div class="site-tags">
+          <span class="site-tag">Tarix</span>
+          <span class="site-tag">Qidiruv</span>
+          <span class="site-tag">Joylashuv</span>
+        </div>
+      </a>
+
+      <a href="https://telegram.org/blog/export-and-more" target="_blank" rel="noopener" class="site-card">
+        <span class="site-arrow">↗</span>
+        <div class="site-logo" style="background:rgba(0,136,204,.15)">✈️</div>
+        <div>
+          <div class="site-name">Telegram Export</div>
+          <div class="site-url">Telegram Desktop → Settings</div>
+        </div>
+        <div class="site-desc">Telegram Desktop orqali barcha xabarlar, media fayllar, kontaktlar va guruhlarni eksport qilish. Settings → Advanced → Export Telegram data.</div>
+        <div class="site-tags">
+          <span class="site-tag">Xabarlar</span>
+          <span class="site-tag">Kontaktlar</span>
+          <span class="site-tag">Media</span>
+        </div>
+      </a>
+
+      <a href="https://www.facebook.com/dyi" target="_blank" rel="noopener" class="site-card">
+        <span class="site-arrow">↗</span>
+        <div class="site-logo" style="background:rgba(24,119,242,.12)">📘</div>
+        <div>
+          <div class="site-name">Facebook / Instagram</div>
+          <div class="site-url">facebook.com/dyi</div>
+        </div>
+        <div class="site-desc">Meta'da saqlanayotgan barcha ma'lumotlaringiz: do'stlar ro'yxati, postlar, like'lar, reklama profili, qidiruvlar. Yuklab oling yoki o'chiring.</div>
+        <div class="site-tags">
+          <span class="site-tag">Facebook</span>
+          <span class="site-tag">Instagram</span>
+          <span class="site-tag">Ads profili</span>
+        </div>
+      </a>
+
+      <a href="https://twitter.com/settings/your_twitter_data" target="_blank" rel="noopener" class="site-card">
+        <span class="site-arrow">↗</span>
+        <div class="site-logo" style="background:rgba(29,161,242,.12)">🐦</div>
+        <div>
+          <div class="site-name">X (Twitter) Archive</div>
+          <div class="site-url">twitter.com/settings/your_twitter_data</div>
+        </div>
+        <div class="site-desc">Barcha tweetlar, DM'lar, like'lar, followerlar va reklama ma'lumotlarini yuklab olish. Settings → Your Account → Download an archive.</div>
+        <div class="site-tags">
+          <span class="site-tag">Tweetlar</span>
+          <span class="site-tag">DM</span>
+          <span class="site-tag">Archive</span>
+        </div>
+      </a>
+
+      <a href="https://haveibeenpwned.com" target="_blank" rel="noopener" class="site-card" style="border-color:rgba(255,59,92,.2)">
+        <span class="site-arrow" style="color:var(--red)">↗</span>
+        <div class="site-logo" style="background:rgba(255,59,92,.12)">🚨</div>
+        <div>
+          <div class="site-name">Have I Been Pwned?</div>
+          <div class="site-url">haveibeenpwned.com</div>
+        </div>
+        <div class="site-desc">Elektron pochta manzilingizni kiriting — u qachon, qaysi sayt buzilishida oshkor bo'lganini ko'rsatadi. Troy Hunt tomonidan yaratilgan, 100% ishonchli.</div>
+        <div class="site-tags">
+          <span class="site-tag" style="color:var(--red);border-color:rgba(255,59,92,.3);background:rgba(255,59,92,.08)">Buzilish tekshiruvi</span>
+          <span class="site-tag">Bepul</span>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="warn-block">
+      <span class="tip-icon">⚠️</span>
+      <div class="tip-text"><strong>Muhim eslatma:</strong> Yuqoridagi barcha saytlar rasmiy va xavfsiz. Lekin shunga o'xshash <em>soxta saytlar</em> ham bor — faqat .google.com, .telegram.org, .facebook.com kabi rasmiy domenlardan foydalaning.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ 3. FISHING ════ -->
+<section>
+  <div class="container reveal">
+    <span class="section-tag">03 · Fishing Hujumi</span>
+    <h2 class="section-title">Soxta saytni <span>taniy olasizmi?</span></h2>
+    <p class="lead">Fishing — soxta havola va sahifalar orqali ma'lumotingizni o'g'irlash. Ko'pincha bitta harf yoki so'z farqi bor.</p>
+
+    <div class="phishing-demo">
+      <h3>🎣 Haqiqiy vs Soxta — Farqni toping</h3>
+      <p class="sub">Qizil belgilangan joyga e'tibor bering</p>
+      <div class="url-compare">
+        <div class="url-box fake">
+          <div class="url-box-label">❌ SOXTA SAYT</div>
+          <div class="url-bar"><span class="lock">🔓</span><span class="url-text"><span class="url-highlight">uzb-kapitalbank</span>.helpdesk.ru/login</span></div>
+          <p class="url-hint">Asl bank domen emas. ".ru" da joylashgan. "helpdesk" qo'shimcha — bu firibgar domen.</p>
+        </div>
+        <div class="url-box real">
+          <div class="url-box-label">✓ HAQIQIY SAYT</div>
+          <div class="url-bar"><span class="lock">🔒</span><span class="url-text" style="color:var(--green)">kapitalbank.uz/login</span></div>
+          <p class="url-hint">Rasmiy ".uz" domen. HTTPS bor (qulf belgisi). Qo'shimcha so'z yo'q.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:24px">
+        <div class="url-compare">
+          <div class="url-box fake">
+            <div class="url-box-label">❌ SOXTA (Telegram)</div>
+            <div class="url-bar"><span class="lock">🔓</span><span class="url-text"><span class="url-highlight">teleqram</span>.gift-bot.com/bonus</span></div>
+            <p class="url-hint">"teleqram" — "telegram" emas! "q" va "g" o'rin almashgan. Bu klassik fishing usuli.</p>
+          </div>
+          <div class="url-box real">
+            <div class="url-box-label">✓ HAQIQIY (Telegram)</div>
+            <div class="url-bar"><span class="lock">🔒</span><span class="url-text" style="color:var(--green)">telegram.org / t.me</span></div>
+            <p class="url-hint">Faqat "telegram.org" yoki "t.me" — boshqa hech narsa Telegram'ning rasmiy manzili emas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards" style="margin-top:32px">
+      <div class="card"><span class="card-icon">😰</span><h3>Shoshiltirish</h3><p>"Akkauntingiz 24 soatda yopiladi!" — bu qo'rqitish usulidir. Bosishdan oldin to'xtang va o'ylab ko'ring.</p></div>
+      <div class="card"><span class="card-icon">🎁</span><h3>Haddan ziyod taklif</h3><p>"500$ yutdingiz!" yoki "iPhone sovg'a!" — hech narsa tekinga kelmaydi. Bu deyarli har doim fishing.</p></div>
+      <div class="card"><span class="card-icon">📱</span><h3>SMS orqali bank</h3><p>Haqiqiy banklar SMS orqali havola yuborib, parol yoki karta raqam so'ramaydi. Hech qachon.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ 4. 2FA ════ -->
+<section style="background:var(--bg2);padding:80px 0">
+  <div class="container reveal">
+    <span class="section-tag">04 · Ikki Bosqichli Tasdiqlash</span>
+    <h2 class="section-title">2FA — <span>qalqon yoqing</span></h2>
+    <p class="lead">Parol o'g'irlansa ham, 2FA uni ishlatib bo'lmaydi. Bu eng muhim himoya choralaridan biri.</p>
+
+    <div class="steps-visual">
+      <div class="step-v">
+        <div class="step-circle"><span>🔑</span><span class="num">1</span></div>
+        <h4>Parol kiritasiz</h4>
+        <p>Odatdagidek login va parolingiz</p>
+      </div>
+      <div class="step-v">
+        <div class="step-circle"><span>📱</span><span class="num">2</span></div>
+        <h4>Kod keladi</h4>
+        <p>Telefoningizga 6 xonali kod SMS yoki app orqali</p>
+      </div>
+      <div class="step-v">
+        <div class="step-circle"><span>✅</span><span class="num">3</span></div>
+        <h4>Kodni kiritasiz</h4>
+        <p>30 soniya ichida amal qiladi</p>
+      </div>
+      <div class="step-v">
+        <div class="step-circle"><span>🛡️</span><span class="num">4</span></div>
+        <h4>Himoyalansiz</h4>
+        <p>Xaker parolni bilsa ham kira olmaydi</p>
+      </div>
+    </div>
+
+    <div class="cards" style="margin-top:40px">
+      <div class="card">
+        <span class="card-icon">✈️</span>
+        <h3>Telegram'da 2FA</h3>
+        <p>Settings → Privacy and Security → Two-Step Verification. Parol o'rnating. Agar kimdir akkauntingizga kirmoqchi bo'lsa, bu parol so'raladi.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">📧</span>
+        <h3>Gmail'da 2FA</h3>
+        <p>myaccount.google.com → Security → 2-Step Verification. Google Authenticator ilovasini ulang — SMS dan ham xavfsizroq.</p>
+      </div>
+      <div class="card">
+        <span class="card-icon">📲</span>
+        <h3>Eng yaxshi app</h3>
+        <p>Google Authenticator yoki Aegis (Android) — bu ilovalar internet siz bo'lmasa ham kod generatsiya qiladi. SMS dan ishonchliroq.</p>
+      </div>
+    </div>
+
+    <div class="tip-block">
+      <span class="tip-icon">🎯</span>
+      <div class="tip-text"><strong>Bugun bajaring:</strong> Telegram, Gmail va Instagram'da 2FA yoqing. Jami 10 daqiqa vaqt ketadi. Bu siz qiladigan eng muhim xavfsizlik chorasi.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ 5. BUZILGANMI? ════ -->
+<section>
+  <div class="container reveal">
+    <span class="section-tag">05 · Tekshiruv Saytlari</span>
+    <h2 class="section-title">Ma'lumotlaringiz <span>oshkor bo'ldimi?</span></h2>
+    <p class="lead">Quyidagi rasmiy va ishonchli saytlar orqali akkauntlaringiz buzilish ma'lumotlar bazasida borligini tekshiring.</p>
+
+    <div class="checks-list">
+
+      <div class="check-card">
+        <div class="check-icon" style="background:rgba(255,59,92,.12)">🔍</div>
+        <div class="check-content">
+          <div class="check-name">Have I Been Pwned?</div>
+          <a href="https://haveibeenpwned.com" target="_blank" class="check-link">haveibeenpwned.com</a>
+          <p class="check-desc">Elektron pochta manzilingizni kiriting — u qaysi ma'lumotlar sizish hodisasiga tushganligi, qachon va qanday ma'lumotlar oshkor bo'lganligi aniq ko'rsatiladi. 14 milliarddan ortiq yozuv bazasi. Troy Hunt tomonidan yaratilgan, Microsoft MVP.</p>
+        </div>
+      </div>
+
+      <div class="check-card">
+        <div class="check-icon" style="background:rgba(0,229,255,.1)">🔑</div>
+        <div class="check-content">
+          <div class="check-name">Bitwarden Password Health</div>
+          <a href="https://bitwarden.com" target="_blank" class="check-link">bitwarden.com</a>
+          <p class="check-desc">Bepul parol menejeri. Barcha parollaringizni tekshiradi: takrorlanganlarini, zaiflarini, buzilgan ma'lumotlar bazasida borlarini. Barchasini bir joyda ko'rishingiz mumkin.</p>
+        </div>
+      </div>
+
+      <div class="check-card">
+        <div class="check-icon" style="background:rgba(255,214,10,.1)">🛡️</div>
+        <div class="check-content">
+          <div class="check-name">Google Password Checkup</div>
+          <a href="https://passwords.google.com" target="_blank" class="check-link">passwords.google.com</a>
+          <p class="check-desc">Google akkauntingizga saqlangan parollar xavfsizligini tekshiradi. Buzilgan, zaif va takrorlangan parollarni topib, almashtirish tavsiya qiladi. Chrome orqali avtomatik ishlaydi.</p>
+        </div>
+      </div>
+
+      <div class="check-card">
+        <div class="check-icon" style="background:rgba(123,47,255,.12)">🔒</div>
+        <div class="check-content">
+          <div class="check-name">Telegram Privacy Settings</div>
+          <a href="https://t.me/settings" target="_blank" class="check-link">t.me/settings → Privacy</a>
+          <p class="check-desc">Telegram'da kim sizning telefon raqamingizni, oxirgi faolligingizni ko'rishi mumkinligini sozlang. "Phone Number → Nobody", "Last Seen → My Contacts" qilib qo'ying.</p>
+        </div>
+      </div>
+
+      <div class="check-card">
+        <div class="check-icon" style="background:rgba(66,133,244,.12)">🌐</div>
+        <div class="check-content">
+          <div class="check-name">Google Safety Check</div>
+          <a href="https://myaccount.google.com/security-checkup" target="_blank" class="check-link">myaccount.google.com/security-checkup</a>
+          <p class="check-desc">Google akkauntingizning xavfsizlik holatini to'liq tekshiradi: noto'g'ri kirish urinishlari, bog'langan ilovalar, parol holati, 2FA holati — barchasi bir joyda.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════ QUIZ ════ -->
+<section style="background:var(--bg2);padding:80px 0">
+  <div class="container reveal">
+    <span class="section-tag">06 · Bilimingizni Sinang</span>
+    <h2 class="section-title">Xavfsizlik <span>Testi</span></h2>
+    <p class="lead">O'quvchilar va o'qituvchilar uchun: quyidagi savollarga javob bering.</p>
+
+    <div class="quiz-section">
+      <h3>🧠 Online Xavfsizlik Kvizi</h3>
+      <p class="qdesc">5 ta savol · Har bir to'g'ri javob uchun 1 ball</p>
+
+      <div id="quizBody">
+        <!-- Q1 -->
+        <div class="quiz-q" id="q0">
+          <p class="q-text">1. Quyidagi parollardan qaysi biri eng kuchli?</p>
+          <div class="quiz-opts">
+            <button class="quiz-opt" onclick="answer(0,0,1)">sardor2010</button>
+            <button class="quiz-opt" onclick="answer(0,1,1)">Maktab#9Qush!</button>
+            <button class="quiz-opt" onclick="answer(0,2,1)">password123</button>
+            <button class="quiz-opt" onclick="answer(0,3,1)">SALOM1234</button>
+          </div>
+          <div class="quiz-feedback" id="f0"></div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="quiz-q" id="q1" style="display:none">
+          <p class="q-text">2. "have i been pwned" saytida nima tekshirish mumkin?</p>
+          <div class="quiz-opts">
+            <button class="quiz-opt" onclick="answer(1,0,0)">Parolning kuchliligi</button>
+            <button class="quiz-opt" onclick="answer(1,1,0)">Internet tezligi</button>
+            <button class="quiz-opt" onclick="answer(1,2,1)">Email buzilish hodisasida bormi</button>
+            <button class="quiz-opt" onclick="answer(1,3,0)">Kompyuter viruslari</button>
+          </div>
+          <div class="quiz-feedback" id="f1"></div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="quiz-q" id="q2" style="display:none">
+          <p class="q-text">3. Qaysi URL haqiqiy bank saytiga o'xshaydi?</p>
+          <div class="quiz-opts">
+            <button class="quiz-opt" onclick="answer(2,0,0)">kapitalbank-help.ru</button>
+            <button class="quiz-opt" onclick="answer(2,1,1)">kapitalbank.uz</button>
+            <button class="quiz-opt" onclick="answer(2,2,0)">kap1talbank.uz</button>
+            <button class="quiz-opt" onclick="answer(2,3,0)">uzb-kapitalbank.com</button>
+          </div>
+          <div class="quiz-feedback" id="f2"></div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="quiz-q" id="q3" style="display:none">
+          <p class="q-text">4. 2FA (ikki bosqichli tasdiqlash) nima uchun kerak?</p>
+          <div class="quiz-opts">
+            <button class="quiz-opt" onclick="answer(3,0,0)">Parolni eslab qolish uchun</button>
+            <button class="quiz-opt" onclick="answer(3,1,0)">Internet tezlashtirish uchun</button>
+            <button class="quiz-opt" onclick="answer(3,2,1)">Parol o'g'irlansa ham himoyalanish uchun</button>
+            <button class="quiz-opt" onclick="answer(3,3,0)">Akkauntni tezroq ochish uchun</button>
+          </div>
+          <div class="quiz-feedback" id="f3"></div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="quiz-q" id="q4" style="display:none">
+          <p class="q-text">5. Google takeout.google.com saytida nima qilish mumkin?</p>
+          <div class="quiz-opts">
+            <button class="quiz-opt" onclick="answer(4,0,0)">Google'da qidirish</button>
+            <button class="quiz-opt" onclick="answer(4,1,1)">O'z Google ma'lumotlarini yuklab olish</button>
+            <button class="quiz-opt" onclick="answer(4,2,0)">Yangi Gmail ochish</button>
+            <button class="quiz-opt" onclick="answer(4,3,0)">Parolni tiklash</button>
+          </div>
+          <div class="quiz-feedback" id="f4"></div>
+        </div>
+      </div>
+
+      <div class="quiz-score" id="quizScore">
+        <div class="score-circle">
+          <span class="score-num" id="scoreNum">0</span>
+          <span class="score-total">/ 5</span>
+        </div>
+        <p class="score-msg" id="scoreMsg"></p>
+        <button class="quiz-restart" onclick="restartQuiz()">🔄 Qayta urinish</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ CHECKLIST ════ -->
+<section>
+  <div class="container reveal">
+    <span class="section-tag">Xulosa · Harakat Rejasi</span>
+    <h2 class="section-title">Bugun <span>bajaring</span></h2>
+    <p class="lead">Shu 7 ta qadamni amalga oshirsangiz, xavfsizligingiz keskin oshadi.</p>
+
+    <ul class="checklist-v">
+      <li><span class="check-num">1</span>Gmail, Telegram, Instagram da <strong>2FA yoqing</strong> (10 daqiqa)</li>
+      <li><span class="check-num">2</span><strong>haveibeenpwned.com</strong> da emailingizni tekshiring</li>
+      <li><span class="check-num">3</span>Har bir muhim saytda <strong>alohida, kuchli parol</strong> o'rnating</li>
+      <li><span class="check-num">4</span><strong>takeout.google.com</strong> dan o'z ma'lumotlaringizni yuklab oling</li>
+      <li><span class="check-num">5</span>Telegram → Settings → Privacy: telefon raqamini <strong>"Nobody"</strong> ga o'ting</li>
+      <li><span class="check-num">6</span>Noma'lum havolalarni bosishdan oldin <strong>URL ni tekshiring</strong></li>
+      <li><span class="check-num">7</span>Telefon va ilovalarni <strong>muntazam yangilang</strong></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ════ FOOTER ════ -->
+<footer>
+  <strong>emaktab.uz</strong> · Online Xavfsizlik bo'limi · O'qituvchi va o'quvchilar uchun
+  <div style="margin-top:8px;font-size:12px">Barcha havolalar rasmiy va ishonchli manbalarga yo'naltirilgan</div>
+</footer>
+
+<!-- ════ JS ════ -->
+<script>
+// ── REVEAL ON SCROLL ──
+const observer = new IntersectionObserver(els=>{
+  els.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible')}})
+},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// ── PASSWORD CHECKER ──
+const pwInput=document.getElementById('pwInput');
+const strengthBar=document.getElementById('strengthBar');
+const strengthLabel=document.getElementById('strengthLabel');
+const crackTime=document.getElementById('crackTime');
+
+function calcCrackTime(pw){
+  let charset=0;
+  if(/[a-z]/.test(pw))charset+=26;
+  if(/[A-Z]/.test(pw))charset+=26;
+  if(/[0-9]/.test(pw))charset+=10;
+  if(/[^a-zA-Z0-9]/.test(pw))charset+=32;
+  if(charset===0)return'—';
+  const combos=Math.pow(charset,pw.length);
+  const guessesPerSec=1e10;
+  const secs=combos/guessesPerSec/2;
+  if(secs<1)return'<1 sekund';
+  if(secs<60)return Math.round(secs)+' sekund';
+  if(secs<3600)return Math.round(secs/60)+' daqiqa';
+  if(secs<86400)return Math.round(secs/3600)+' soat';
+  if(secs<2592000)return Math.round(secs/86400)+' kun';
+  if(secs<31536000)return Math.round(secs/2592000)+' oy';
+  const years=secs/31536000;
+  if(years<1000)return Math.round(years)+' yil';
+  if(years<1e6)return Math.round(years/1000)+'K yil';
+  return(years/1e9).toFixed(1)+'Mlrd yil';
+}
+
+pwInput.addEventListener('input',function(){
+  const pw=this.value;
+  if(!pw){
+    strengthBar.style.width='0';strengthBar.style.background='';
+    strengthLabel.textContent='Parol kiriting...';strengthLabel.style.color='var(--muted)';
+    crackTime.textContent='—';
+    document.querySelectorAll('.criterion').forEach(c=>{c.classList.remove('met')});
+    return;
+  }
+  const checks={
+    'c-len':pw.length>=8,
+    'c-upper':/[A-Z]/.test(pw),
+    'c-lower':/[a-z]/.test(pw),
+    'c-num':/[0-9]/.test(pw),
+    'c-sym':/[^a-zA-Z0-9]/.test(pw),
+    'c-long':pw.length>=12
+  };
+  Object.entries(checks).forEach(([id,met])=>{
+    const el=document.getElementById(id);
+    if(el){met?el.classList.add('met'):el.classList.remove('met')}
+  });
+  const score=Object.values(checks).filter(Boolean).length;
+  const pct=[0,16,32,50,66,83,100][score];
+  const configs=[
+    {color:'#ff3b5c',label:'Juda zaif'},
+    {color:'#ff3b5c',label:'Zaif'},
+    {color:'#ff9500',label:'O\'rtacha'},
+    {color:'#ffd60a',label:'Qoniqarli'},
+    {color:'#4cd964',label:'Yaxshi'},
+    {color:'#00ff9d',label:'Kuchli'},
+    {color:'#00ff9d',label:'A\'lo! 🔐'}
+  ];
+  const cfg=configs[score]||configs[0];
+  strengthBar.style.width=pct+'%';
+  strengthBar.style.background=cfg.color;
+  strengthBar.style.boxShadow=`0 0 12px ${cfg.color}60`;
+  strengthLabel.textContent=cfg.label;
+  strengthLabel.style.color=cfg.color;
+  crackTime.textContent=calcCrackTime(pw);
+});
+
+function togglePw(){
+  const inp=document.getElementById('pwInput');
+  inp.type=inp.type==='password'?'text':'password';
+}
+
+// ── QUIZ ──
+let currentQ=0,score=0;
+const answers=[1,2,1,2,1];
+const feedbacks=[
+  ['Zaif! Ismingiz va yilingiz — xakerlar birinchi sinadigan narsa.','✅ To\'g\'ri! Katta harf, maxsus belgi, 12+ ta belgi — ideal kombinatsiya.','password — dunyodagi eng ko\'p ishlatiladigan va zaif parol.','Faqat katta harflar yetarli emas, maxsus belgilar va raqamlar ham zarur.'],
+  ['Parol kuchliligi uchun alohida saytlar bor, masalan checker.','Internet tezligi boshqa xizmatlar orqali tekshiriladi.','✅ To\'g\'ri! "Have I Been Pwned" milliardlab buzilgan email manzillar bazasiga ega.','Virus tekshiruvi uchun antivirus dasturlari ishlatiladi.'],
+  ['".ru" — Rossiya domeni. Bank ".uz" da bo\'lishi kerak.','✅ To\'g\'ri! Rasmiy ".uz" domen, oddiy va to\'g\'ri yozilgan.','"kap1tal" — raqam bilan yozilgan. Bu fishing usulidir.','".com" — xorijiy domen. O\'zbekiston banklari ".uz" dan foydalanadi.'],
+  ['Parolni menejerlarda saqlash yoki eslab qolish usullari bor.','Bu VPN yoki tarmoq sozlamalari bilan bog\'liq.','✅ To\'g\'ri! Parol o\'g\'irlansa ham, xaker 2FA kodini bila olmaydi.','Akkaunt ochish tezligi 2FA bilan hech bog\'liq emas.'],
+  ['Google qidiruv asosiy sahifasi boshqa.','✅ To\'g\'ri! Takeout barcha Google ma\'lumotlaringizni yuklab olish imkonini beradi.','Gmail ochish accounts.google.com orqali bo\'ladi.','Parol tiklash accounts.google.com/signin/recovery orqali.']
+];
+
+function answer(qIdx,chosen,correct){
+  const opts=document.querySelectorAll(`#q${qIdx} .quiz-opt`);
+  opts.forEach((o,i)=>{
+    o.disabled=true;
+    if(i===correct)o.classList.add('correct');
+    else if(i===chosen&&chosen!==correct)o.classList.add('wrong');
+  });
+  const fb=document.getElementById('f'+qIdx);
+  const isCorrect=chosen===correct;
+  if(isCorrect)score++;
+  fb.textContent=feedbacks[qIdx][chosen];
+  fb.className='quiz-feedback show '+(isCorrect?'ok':'nok');
+  setTimeout(()=>{
+    currentQ++;
+    if(currentQ<5){
+      document.getElementById('q'+(currentQ-1)).style.display='none';
+      const nextQ=document.getElementById('q'+currentQ);
+      nextQ.style.display='block';
+      nextQ.scrollIntoView({behavior:'smooth',block:'center'});
+    } else {
+      document.getElementById('quizBody').style.display='none';
+      const sc=document.getElementById('quizScore');
+      sc.classList.add('show');
+      document.getElementById('scoreNum').textContent=score;
+      const msgs=['Yana bir bor o\'qib chiqing — xavfsizlik muhim! 💪','Yaxshi boshlanish! Biroz ko\'proq o\'qing 📚','Qoniqarli! Amaliyot kerak 👍','Juda yaxshi! Deyarli mutaxassis 🌟','Mukammal! Siz haqiqiy xavfsizlik mutaxassisisiz! 🔐'];
+      document.getElementById('scoreMsg').textContent=msgs[score];
+    }
+  },1800);
+}
+
+function restartQuiz(){
+  currentQ=0;score=0;
+  for(let i=0;i<5;i++){
+    const q=document.getElementById('q'+i);
+    q.style.display=i===0?'block':'none';
+    q.querySelectorAll('.quiz-opt').forEach(o=>{o.disabled=false;o.classList.remove('correct','wrong')});
+    document.getElementById('f'+i).className='quiz-feedback';
+  }
+  document.getElementById('quizBody').style.display='block';
+  document.getElementById('quizScore').classList.remove('show');
+}
+</script>
+</body>
+</html>
